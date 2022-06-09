@@ -15,9 +15,9 @@ datasource db {
 model User {
   id    String @id @default(cuid())
   name  String
-  email String
-  username String
-
+  email String @unique
+  username String @unique
+  password String
   tweets Tweet[]
 }
 
@@ -29,5 +29,3 @@ model Tweet {
   user User @relation(fields: [userId], references: [id])
   @@index([userId])
 }
-
-
